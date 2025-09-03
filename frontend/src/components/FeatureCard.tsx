@@ -51,25 +51,40 @@ function FeatureCard({ title, subtitle, href = "#" }: FeatureCardProps) {
             "radial-gradient(140px 140px at 100% 0%, rgba(255,255,255,0.07), transparent), radial-gradient(180px 180px at 0% 100%, rgba(255,255,255,0.06), transparent)",
         }}
       />
-      <div className="relative z-10 flex h-64 flex-col items-center justify-center gap-4 text-center md:h-72">
-        <div className="relative grid h-16 w-16 place-items-center rounded-full border border-white/15 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_20px_rgba(0,0,0,0.08)]">
-          <span className="text-lg font-semibold" style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.35))" }}>
-            {initial}
-          </span>
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-full"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(255,255,255,0.25), rgba(255,255,255,0.06) 55%, transparent 70%)",
-            }}
-          />
+      <div className="relative z-10 flex h-64 flex-col justify-between p-2 md:h-72">
+        {/* Top section - Logo, title, subtitle, description */}
+        <div className="flex flex-col items-center text-center space-y-3">
+          <div className="relative grid h-16 w-16 place-items-center rounded-full border border-white/15 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_20px_rgba(0,0,0,0.08)] mt-2">
+            <span className="text-lg font-semibold" style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.35))" }}>
+              {initial}
+            </span>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(closest-side, rgba(255,255,255,0.25), rgba(255,255,255,0.06) 55%, transparent 70%)",
+              }}
+            />
+          </div>
+          
+          <div className="space-y-1">
+            <h3 className="text-lg font-bold">{title}</h3>
+            <p className="text-sm text-white/80 font-medium">{subtitle}</p>
+          </div>
+          
+          <p className="text-xs text-white/60 leading-relaxed px-2">
+            {title === "Baycare" 
+              ? "Get instant medical insights, symptom analysis, and healthcare guidance powered by advanced AI technology."
+              : "Receive emotional support, mental health resources, and personalized care for your wellbeing journey."
+            }
+          </p>
         </div>
-        <div className="mt-1">
-          <h3 className="text-base font-semibold">{title}</h3>
-          <p className="mt-1 text-sm text-white/70">{subtitle}</p>
+        
+        {/* Bottom section - Open button */}
+        <div className="flex justify-center mt-4">
+          <GlassButton hovered={hovered} />
         </div>
-        <GlassButton hovered={hovered} />
       </div>
     </a>
   );
@@ -79,8 +94,8 @@ function GlassButton({ hovered }: { hovered: boolean }) {
   return (
     <span
       className={[
-        "relative inline-flex select-none items-center justify-center rounded-full px-5 py-2 text-sm font-semibold",
-        "text-white",
+        "relative inline-flex select-none items-center justify-center rounded-full px-8 py-3 text-sm font-semibold",
+        "text-white min-w-[120px]",
         "border border-white/30 bg-white/10",
         "shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_6px_22px_rgba(0,0,0,0.6)]",
         "backdrop-blur-md transition-all",
@@ -95,8 +110,24 @@ function GlassButton({ hovered }: { hovered: boolean }) {
           opacity: 1,
         }}
       />
-      <span className="relative z-10 font-medium" style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5))" }}>
+      <span className="relative z-10 font-medium flex items-center gap-2" style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5))" }}>
         Open
+        <svg 
+          width="16" 
+          height="12" 
+          viewBox="0 0 16 12" 
+          fill="none" 
+          className="transition-transform duration-200"
+          style={{ transform: hovered ? 'translateX(2px)' : 'translateX(0px)' }}
+        >
+          <path 
+            d="M1 6h14m-6-5l5 5-5 5" 
+            stroke="currentColor" 
+            strokeWidth="1.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          />
+        </svg>
       </span>
     </span>
   );
