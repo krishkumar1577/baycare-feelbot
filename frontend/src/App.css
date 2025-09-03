@@ -1,9 +1,7 @@
 @import "tailwindcss";
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
@@ -25,6 +23,147 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Neon Border Animation */
+@keyframes neon-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-neon-border {
+  animation: neon-border var(--neon-border-duration) linear infinite;
+}
+
+.neon-border-one {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  filter: blur(1px) drop-shadow(0 0 12px var(--color1));
+  z-index: -1;
+  inset: 0;
+}
+
+.neon-border-one::before {
+  content: "";
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: var(--anim-width);
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--color1),
+    var(--color1),
+    transparent,
+    transparent
+  );
+}
+
+.neon-border-two {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  filter: blur(1px) drop-shadow(0 0 12px var(--color2));
+  z-index: -1;
+  inset: 0;
+}
+
+.neon-border-two::before {
+  content: "";
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  overflow: hidden;
+  width: var(--anim-width);
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    transparent,
+    var(--color2),
+    var(--color2)
+  );
+}
+
+/* Lamp Effect Animations */
+.lamp-mask-top {
+  mask-image: linear-gradient(to top, white, transparent);
+  -webkit-mask-image: linear-gradient(to top, white, transparent);
+}
+
+.lamp-mask-right {
+  mask-image: linear-gradient(to right, white, transparent);
+  -webkit-mask-image: linear-gradient(to right, white, transparent);
+}
+
+.lamp-mask-left {
+  mask-image: linear-gradient(to left, white, transparent);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+
+/* Spotlight Animation */
+.animate-spotlight {
+  animation: spotlight-anim ease-in-out var(--duration) forwards;
+  animation-delay: var(--delay);
+}
+
+/* Glowing Line Animation */
+.animate-glowing-line {
+  animation: glowing-line-anim ease-in-out var(--duration) forwards;
+  animation-delay: var(--delay);
+}
+
+/* Conic Gradient Animation */
+.animate-conic-gradient {
+  animation: conic-gradient-anim ease-in-out var(--duration) forwards;
+  animation-delay: var(--delay);
+}
+
+/* Keyframes for Spotlight */
+@keyframes spotlight-anim {
+  from {
+    width: 8rem;
+  }
+  to {
+    width: 16rem;
+  }
+}
+
+/* Keyframes for Glowing Line */
+@keyframes glowing-line-anim {
+  from {
+    width: 15rem;
+  }
+  to {
+    width: 30rem;
+  }
+}
+
+/* Keyframes for Conic Gradient */
+@keyframes conic-gradient-anim {
+  from {
+    opacity: 0.5;
+    width: 15rem;
+  }
+  to {
+    opacity: 1;
+    width: 30rem;
   }
 }
 
