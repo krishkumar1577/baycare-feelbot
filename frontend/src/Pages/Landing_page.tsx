@@ -1,5 +1,6 @@
 import React from "react";
 import FeatureCard from "../components/FeatureCard";
+// import CryptoCard from "../components/CryptoCard";
 
 const LandingPage: React.FC = () => {
   return (
@@ -12,10 +13,28 @@ const LandingPage: React.FC = () => {
         <LampGlow />
         <Divider />
         <div className="grid w-full gap-6 sm:grid-cols-2">
-          <FeatureCard title="Baycare" subtitle="Healthcare AI" href="#baycare" accent="cyan" />
-          <FeatureCard title="Feelbot" subtitle="Emotional Support" href="#feelbot" accent="cyan" />
+          <FeatureCard
+            title="Baycare"
+            subtitle="Healthcare AI Dashboard"
+            href="/baycare-dashboard"
+            accent="cyan"
+          />
+          <FeatureCard
+            title="Feelbot"
+            subtitle="Emotional Support"
+            href="#feelbot"
+            accent="cyan"
+          />
         </div>
         <SmallNote />
+        {/* <CryptoCard width={250} height={250}
+          title="ETH Balance"
+          value="4.4"
+          currency="ETH"
+          percentChange={12}
+          changeLabel="24h Change"
+          onClose={() => console.log("Card closed")}
+        /> */}
       </section>
     </main>
   );
@@ -33,7 +52,10 @@ function HeroTitle() {
       </h1>
       <p
         className="text-pretty mt-2 text-2xl font-semibold md:text-5xl"
-        style={{ color: "white", filter: "drop-shadow(0 0 10px rgba(255,255,255,0.22))" }}
+        style={{
+          color: "white",
+          filter: "drop-shadow(0 0 10px rgba(255,255,255,0.22))",
+        }}
       >
         Healthcare Companion
       </p>
@@ -73,7 +95,8 @@ function LampGlow() {
 function SmallNote() {
   return (
     <p className="max-w-2xl text-center text-xs text-white/60">
-      This interface is a preview. Always consult certified professionals for medical advice.
+      This interface is a preview. Always consult certified professionals for
+      medical advice.
     </p>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type FeatureCardProps = {
   title: string;
@@ -12,8 +13,8 @@ function FeatureCard({ title, subtitle, href = "#" }: FeatureCardProps) {
   const initial = title.charAt(0).toUpperCase();
 
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={[
@@ -86,7 +87,7 @@ function FeatureCard({ title, subtitle, href = "#" }: FeatureCardProps) {
           <GlassButton hovered={hovered} />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
