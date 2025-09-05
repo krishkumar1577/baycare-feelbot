@@ -1,4 +1,6 @@
 import React from "react";
+import AppleActivityCard from "../components/AppleActivityCard";
+import CryptoCard from "../components/Healthcard";
 
 const BaycareDashboard: React.FC = () => {
   return (
@@ -30,12 +32,12 @@ const BaycareDashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Study Card - Top Right */}
-          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 flex flex-col justify-between border border-zinc-800">
-            <div className="text-right">
-              <p className="text-xs text-zinc-400">Module title</p>
-            </div>
-            <h3 className="text-2xl font-medium text-white text-right">Study</h3>
+          {/* Apple Activity Card - Top Right */}
+          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl border border-zinc-800 overflow-hidden">
+            <AppleActivityCard 
+              title="Health Rings"
+              className="bg-transparent h-full w-full flex items-center justify-center scale-50"
+            />
           </div>
 
           {/* Style Card - Middle Center */}
@@ -58,11 +60,17 @@ const BaycareDashboard: React.FC = () => {
             <p className="text-xs text-zinc-500 mt-4">baycarehealthcare.ai</p>
           </div>
 
-          {/* Large Number Card - Bottom Center */}
-          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 flex items-center justify-center border border-zinc-800">
-            <div className="text-center">
-              <h2 className="text-6xl font-light text-white mb-2">123</h2>
-            </div>
+          {/* Blood Pressure Health Card - Bottom Center */}
+          <div className="col-span-1 row-span-1 bg-transparent rounded-2xl overflow-hidden border-0">
+            <CryptoCard 
+              title="Blood Pressure"
+              value="120/80"
+              currency="mmHg"
+              percentChange={2.5}
+              changeLabel="24h Change"
+              width={200}
+              height={200}
+            />
           </div>
 
           {/* 16:9 Ratio Card - Bottom Right */}

@@ -125,39 +125,57 @@ const CryptoCard: React.FC<CryptoCardProps> = ({
                 </svg>
               </div>
             )}
+            {currency === 'mmHg' && (
+              <div className="text-red-400" style={{ marginBottom: `${Math.max(4, 8 * scale)}px` }}>
+                <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" 
+                    fill="currentColor" 
+                    fillOpacity="0.9"
+                  />
+                </svg>
+              </div>
+            )}
           </div>
 
           <div className="text-right">
-            <p 
-              className="text-white/70 mb-2" 
-              style={{ 
-                fontSize: `${Math.max(10, 14 * scale)}px`,
-                marginBottom: `${Math.max(4, 8 * scale)}px`
-              }}
-            >
-              {changeLabel}
-            </p>
-            <div
-              className={`inline-flex items-center rounded-full font-medium ${
-                isPositive ? "bg-emerald-500/90 text-white" : "bg-red-500/90 text-white"
-              }`}
-              style={{
-                gap: `${Math.max(4, 6 * scale)}px`,
-                padding: `${Math.max(4, 8 * scale)}px ${Math.max(8, 16 * scale)}px`,
-                fontSize: `${percentSize}px`
-              }}
-            >
-              {Math.abs(percentChange)}%
-              {isPositive ? (
-                <svg width={Math.max(12, 16 * scale)} height={Math.max(12, 16 * scale)} viewBox="0 0 24 24" fill="none">
-                  <path d="M7 14L12 9L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              ) : (
-                <svg width={Math.max(12, 16 * scale)} height={Math.max(12, 16 * scale)} viewBox="0 0 24 24" fill="none">
-                  <path d="M17 10L12 15L7 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-            </div>
+            {currency === 'mmHg' ? (
+              <div className="space-y-1">
+                <span className="text-xs text-green-400 font-medium">NORMAL</span>
+              </div>
+            ) : (
+              <div>
+                <p 
+                  className="text-white/70 mb-2" 
+                  style={{ 
+                    fontSize: `${Math.max(10, 14 * scale)}px`,
+                    marginBottom: `${Math.max(4, 8 * scale)}px`
+                  }}
+                >
+                  {changeLabel}
+                </p>
+                <div
+                  className={`inline-flex items-center rounded-full font-medium ${
+                    isPositive ? "bg-emerald-500/90 text-white" : "bg-red-500/90 text-white"
+                  }`}
+                  style={{
+                    gap: `${Math.max(4, 6 * scale)}px`,
+                    padding: `${Math.max(4, 8 * scale)}px ${Math.max(8, 16 * scale)}px`,
+                    fontSize: `${percentSize}px`
+                  }}
+                >
+                  {Math.abs(percentChange)}%
+                  {isPositive ? (
+                    <svg width={Math.max(12, 16 * scale)} height={Math.max(12, 16 * scale)} viewBox="0 0 24 24" fill="none">
+                      <path d="M7 14L12 9L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  ) : (
+                    <svg width={Math.max(12, 16 * scale)} height={Math.max(12, 16 * scale)} viewBox="0 0 24 24" fill="none">
+                      <path d="M17 10L12 15L7 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -202,7 +220,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({
                 className="text-white font-medium leading-relaxed"
                 style={{ fontSize: `${Math.max(11, 14 * scale)}px` }}
               >
-                {lastPurchase.date}
+                {currency === 'mmHg' ? 'Today 3:45 PM' : lastPurchase.date}
               </p>
               <p 
                 className="text-white/90 font-medium"
@@ -211,7 +229,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({
                   marginTop: `${Math.max(6, 8 * scale)}px`
                 }}
               >
-                Last bought at: {lastPurchase.price}
+                {currency === 'mmHg' ? 'Previous: 118/78 mmHg' : `Last bought at: ${lastPurchase.price}`}
               </p>
             </div>
           </>
