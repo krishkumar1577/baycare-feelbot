@@ -1,6 +1,8 @@
 import React from "react";
 import AppleActivityCard from "../components/AppleActivityCard";
 import CryptoCard from "../components/Healthcard";
+import MoodTracker from "../components/moodtraker";
+import SleepTracker from "../components/SleepTracker";
 
 const BaycareDashboard: React.FC = () => {
   return (
@@ -45,11 +47,9 @@ const BaycareDashboard: React.FC = () => {
             <h3 className="text-3xl font-medium text-white">Style</h3>
           </div>
 
-          {/* Module title Card - Middle Right */}
-          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 flex flex-col justify-between border border-zinc-800">
-            <div className="text-right">
-              <p className="text-xs text-zinc-400">Module title</p>
-            </div>
+          {/* Mood Tracker Card - Middle Right */}
+          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 border border-zinc-800">
+            <MoodTracker />
           </div>
 
           {/* Text Block Card - Bottom Left */}
@@ -73,12 +73,14 @@ const BaycareDashboard: React.FC = () => {
             />
           </div>
 
-          {/* 16:9 Ratio Card - Bottom Right */}
-          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 flex flex-col justify-between border border-zinc-800">
-            <div className="text-right">
-              <p className="text-xs text-zinc-400">Module title</p>
-            </div>
-            <h3 className="text-4xl font-light text-white text-right">16:9</h3>
+          {/* Sleep Tracker Card - Bottom Right */}
+          <div className="col-span-1 row-span-1 bg-zinc-900 rounded-2xl p-6 border border-zinc-800">
+            <SleepTracker 
+              totalSleep="7h 24m"
+              qualityScore={85}
+              bedTime="11:30 PM"
+              wakeTime="6:54 AM"
+            />
           </div>
 
           {/* Typography Card - Bottom Right Large */}

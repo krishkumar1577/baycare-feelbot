@@ -1,9 +1,4 @@
-"use client"
-
 import { useState } from "react"
-// import { Button } from "@/components/ui/button"
-// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-// import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const moodData = [
   { level: 1, emoji: "😢", label: "Terrible" },
@@ -19,7 +14,7 @@ const moodData = [
 ]
 
 export default function MoodTracker() {
-  const [currentMood, setCurrentMood] = useState<(typeof moodData)[0]>(moodData[4]) // Start with neutral mood
+  const [currentMood, setCurrentMood] = useState<(typeof moodData)[0]>(moodData[6]) // Start with Good mood
 
   const navigateMood = (direction: "prev" | "next") => {
     const currentIndex = moodData.findIndex((mood) => mood.level === currentMood.level)
@@ -35,43 +30,40 @@ export default function MoodTracker() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 flex items-center justify-center">
-      <div className="w-full max-w-sm">
-        <Card className="bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl">
-          <CardHeader className="text-center pb-4">
-            <CardTitle className="text-xl font-light text-white">Mood Tracker</CardTitle>
-            <CardDescription className="text-gray-400 text-sm">How are you feeling?</CardDescription>
-          </CardHeader>
-          <CardContent className="text-center space-y-6 pb-8">
-            <div className="flex items-center justify-center space-x-6">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigateMood("prev")}
-                className="text-white hover:bg-white/10 h-10 w-10 p-0 border border-white/20 hover:border-white/40 transition-all duration-200"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
+    <div className="h-full flex flex-col justify-between">
+      {/* Header */}
+      <div className="text-right">
+        <p className="text-xs text-zinc-400 text-Center">Mood Tracker</p>
+      </div>
 
-              <div className="flex flex-col items-center space-y-3">
-                <div className="text-7xl">{currentMood.emoji}</div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-medium text-white">{currentMood.label}</h3>
-                  <p className="text-sm text-gray-400">{currentMood.level}/10</p>
-                </div>
-              </div>
+      {/* Mood Display */}
+      <div className="flex flex-col items-center space-y-2">
+        <div className="text-4xl">{currentMood.emoji}</div>
+        <div className="text-center">
+          <h3 className="text-sm font-medium text-white">{currentMood.label}</h3>
+          <p className="text-xs text-zinc-400">{currentMood.level}/10</p>
+        </div>
+      </div>
 
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigateMood("next")}
-                className="text-white hover:bg-white/10 h-10 w-10 p-0 border border-white/20 hover:border-white/40 transition-all duration-200"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Navigation */}
+      <div className="flex items-center justify-center space-x-4">
+        <button
+          onClick={() => navigateMood("prev")}
+          className="text-white hover:bg-white/10 h-8 w-8 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 flex items-center justify-center"
+        >
+          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button
+          onClick={() => navigateMood("next")}
+          className="text-white hover:bg-white/10 h-8 w-8 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 flex items-center justify-center"
+        >
+          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
   )
