@@ -3,6 +3,7 @@ import AppleActivityCard from "../components/AppleActivityCard";
 import CryptoCard from "../components/Healthcard";
 import MoodTracker from "../components/moodtraker";
 import SleepTracker from "../components/SleepTracker";
+import PersonalizedInsights from "../components/PersonalizedInsights";
 
 const BaycareDashboard: React.FC = () => {
   return (
@@ -12,8 +13,11 @@ const BaycareDashboard: React.FC = () => {
         <div className="grid grid-cols-6 grid-rows-2 gap-4 h-screen">
           
           {/* Large Module Card - Top Left */}
-          <div className="col-span-2 row-span-2 bg-zinc-900 rounded-2xl p-8 flex items-center justify-center border border-zinc-800">
-            <h2 className="text-6xl font-light text-white">Modular</h2>
+          <div className="col-span-2 row-span-2 bg-zinc-900 rounded-2xl flex flex-col items-center justify-start border border-zinc-800 gap-4">
+            {/* <h2 className="text-6xl font-light text-white">Modular</h2> */}
+            <div className="w-full h-full">
+              <PersonalizedInsights />
+            </div>
           </div>
 
           {/* Presentation Card - Top Center */}
