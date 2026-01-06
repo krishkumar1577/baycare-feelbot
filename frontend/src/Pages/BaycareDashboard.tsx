@@ -4,6 +4,8 @@ import CryptoCard from "../components/Healthcard";
 import MoodTracker from "../components/moodtraker";
 import SleepTracker from "../components/SleepTracker";
 import PersonalizedInsights from "../components/PersonalizedInsights";
+import WeeklyHealthRecap from "../components/WeeklyHealthRecap";
+import WeeklyStory from "../components/WeeklyStory";
 
 const BaycareDashboard: React.FC = () => {
   return (
@@ -20,9 +22,9 @@ const BaycareDashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Presentation Card - Top Center */}
-          <div className="col-span-2 row-span-1 bg-zinc-900 rounded-2xl p-8 flex items-center justify-center border border-zinc-800">
-            <h3 className="text-3xl font-medium text-white">Presentation</h3>
+          {/* Weekly Health Recap Card - Top Center */}
+          <div className="col-span-2 row-span-1">
+            <WeeklyHealthRecap />
           </div>
 
           {/* Metrics Column - Top Right */}
@@ -87,11 +89,10 @@ const BaycareDashboard: React.FC = () => {
           </div>
 
           {/* Text Block Card - Bottom Left */}
-          <div className="col-span-2 row-span-1 bg-zinc-900 rounded-2xl p-6 border border-zinc-800">
-            <p className="text-sm text-zinc-300 leading-relaxed">
-              The depth of brand case studies enables a detailed look into the implementation and effects of various marketing tools. They allow marketers to observe the correlation between specific tools and their impacts on brand perception and growth.
-            </p>
-            <p className="text-xs text-zinc-500 mt-4">baycarehealthcare.ai</p>
+          <div className="col-span-2 row-span-1 bg-zinc-900 rounded-2xl border border-zinc-800 relative overflow-hidden cursor-pointer">
+            <div className="absolute inset-0 overflow-y-auto scrollbar-hide">
+              <WeeklyStory isModal={true} />
+            </div>
           </div>
 
           {/* Blood Pressure Health Card - Bottom Center */}
